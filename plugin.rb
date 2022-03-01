@@ -1,8 +1,8 @@
-# name: discourse-azure-ad
-# about: Microsoft Azure Active Directory OAuth support for Discourse
-# version: 0.1
-# authors: Neil Lalonde
-# url: https://github.com/discourse/discourse-azure-ad
+# name: Microsoft Azure login
+# about: Microsoft Azure login
+# version: 0.2
+# authors: Julian Primetshofer
+# url: https://github.com/Keiinmal/AzureLogin
 
 require_dependency 'auth/oauth2_authenticator'
 
