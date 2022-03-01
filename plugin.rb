@@ -36,6 +36,7 @@ class AzureOAuth2Authenticator < ::Auth::OAuth2Authenticator
       end
       #result.name = auth['info']['name']
       result.name = email.split('@')[0]
+      result.username = auth['info']['name']
     end
 
     current_info = ::PluginStore.get("azure_oauth2", "azure_oauth2_user_#{auth['uid']}")
