@@ -34,8 +34,8 @@ class AzureOAuth2Authenticator < ::Auth::OAuth2Authenticator
         result.email = email
         result.email_valid = true
       end
-      result.username = email.split('@')[0]
-      #result.name = auth['info']['name']
+      #result.username = email.split('@')[0]
+      result.name = auth['info']['name']
 
       variables = ""
       auth['info'].each { |x| variables = variables + ", " + x }
