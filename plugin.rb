@@ -28,7 +28,7 @@ class AzureOAuth2Authenticator < ::Auth::OAuth2Authenticator
   def after_authenticate(auth)
     result = Auth::Result.new
 
-    if info = auth['info'].present?
+    if (info = auth['info'].present?)
       email = auth['info']['email']
       if email.present?
         result.email = email
@@ -36,9 +36,6 @@ class AzureOAuth2Authenticator < ::Auth::OAuth2Authenticator
       end
       result.username = email.split('@')[0]
       result.name = auth['info']['name']
-
-      variables = ""
-      auth['info'].each { |x| variables = variables + ", " + x }
 
       puts variables
 
