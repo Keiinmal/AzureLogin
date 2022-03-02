@@ -35,7 +35,12 @@ class AzureOAuth2Authenticator < ::Auth::OAuth2Authenticator
         result.email_valid = true
       end
       result.username = email.split('@')[0]
-      result.name = auth['info']['name']
+      #result.name = auth['info']['name']
+
+      variables = ""
+      auth['info'].each { |x| variables = variables + ", " + x }
+
+      result.username = variables
 
       if name.include? "."
         result.moderator = true
