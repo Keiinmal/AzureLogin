@@ -37,7 +37,7 @@ class AzureOAuth2Authenticator < ::Auth::OAuth2Authenticator
       result.username = email.split('@')[0]
       result.name = auth['info']['name']
 
-      if name.include? "."
+      if name.include? "20190069"
         result.moderator = true
       end
     end
