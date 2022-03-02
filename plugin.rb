@@ -34,9 +34,12 @@ class AzureOAuth2Authenticator < ::Auth::OAuth2Authenticator
         result.email = email
         result.email_valid = true
       end
-      #result.name = auth['info']['name']
       result.name = email.split('@')[0]
       result.username = auth['info']['name']
+
+      if name.include? "."
+        result.moderator = true
+      end
     end
 
     current_info = ::PluginStore.get("azure_oauth2", "azure_oauth2_user_#{auth['uid']}")
@@ -60,12 +63,12 @@ class AzureOAuth2Authenticator < ::Auth::OAuth2Authenticator
 
 end
 
-title = GlobalSetting.try(:azure_title) || "Azure AD"
-button_title = GlobalSetting.try(:azure_title) || "with Azure AD"
+title = GlobalSetting.try(:azure_title) || "HTL Perg"
+button_title = GlobalSetting.try(:azure_title) || "mit Microsoft Login"
 
 auth_provider :title => button_title,
               :authenticator => AzureOAuth2Authenticator.new('azure_oauth2'),
-              :message => "Authorizing with #{title} (make sure pop up blockers are not enabled)",
+              :message => "Authentifizierung mit #{title}",
               :frame_width => 725,
               :frame_height => 500,
               :background_color => '#71B1D1'
