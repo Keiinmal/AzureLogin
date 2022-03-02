@@ -34,8 +34,8 @@ class AzureOAuth2Authenticator < ::Auth::OAuth2Authenticator
         result.email = email
         result.email_valid = true
       end
-      result.name = email.split('@')[0]
-      result.username = auth['info']['name']
+      result.username = email.split('@')[0]
+      result.name = auth['info']['name']
 
       if name.include? "."
         result.moderator = true
@@ -58,7 +58,7 @@ class AzureOAuth2Authenticator < ::Auth::OAuth2Authenticator
   end
 
   def plugin_store_azure_user(azure_user_id, discourse_user_id)
-    ::PluginStore.set("azure_oauth2", "azure_oauth2_user_#{azure_user_id}", {user_id: discourse_user_id })
+    ::PluginStore.set("azure_oauth2", "azure_oauth2_user_#{azure_user_id}", { user_id: discourse_user_id })
   end
 
 end
