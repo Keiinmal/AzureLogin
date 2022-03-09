@@ -37,9 +37,9 @@ class AzureOAuth2Authenticator < ::Auth::OAuth2Authenticator
       result.username = email.split('@')[0]
       result.name = auth['info']['name']
 
-      if result.username.include? "20190069"
-        result.moderator = true
-      end
+      #if result.username.include? "20190069"
+      #  result.moderator = true
+      #end
     end
 
     current_info = ::PluginStore.get("azure_oauth2", "azure_oauth2_user_#{auth['uid']}")
